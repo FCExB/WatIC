@@ -32,7 +32,7 @@ public abstract class SpriteControl : MonoBehaviour {
 		else 
 			moveSpeed = defaultMoveSpeed;
 		
-		transform.position = Vector3.Slerp(transform.position,location, Time.deltaTime*moveSpeed);
+		transform.position = Vector3.Lerp(transform.position,location, Time.deltaTime*moveSpeed);
 
 		update();
 	}

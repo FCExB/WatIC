@@ -31,14 +31,14 @@ public class Dance : MonoBehaviour {
 			targetRotation = Quaternion.AngleAxis((Random.value-0.5f)*2 * maxAngleRange, Vector3.forward); 
 		}
 
-		transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * rotateSpeed);
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotateSpeed);
 	
 
 		if(Mathf.Abs(transform.localPosition.y - targetPosition.y) < 0.1f)
 		{
-			targetPosition = new Vector3(0,(Random.value-0.5f)*2 * maxVerticalChange,0);
+			targetPosition = new Vector3(0f,(Random.value-0.5f)*2 * maxVerticalChange,0);
 		}
 
-		transform.localPosition = Vector3.Slerp(transform.localPosition, targetPosition, Time.deltaTime * upDownSpeed);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * upDownSpeed);
 	}
 }

@@ -6,8 +6,8 @@ public class FlutterbyControl : SpriteControl {
 	public GameObject convo;
 
 	public override void init() {
-		locationLookup.Add(State.FlutterbyState, new Vector3(-6.61f,-6.25f,0));
-		locationLookup.Add (State.FlutterbyLeavesState, new Vector3(-15f,-6.35f,0));
+		locationLookup.Add(State.FlutterbyState, new Vector3(-6.61f,-6.25f,-1));
+		locationLookup.Add (State.FlutterbyLeavesState, new Vector3(-15f,-6.35f,-1));
 
 		convo.SetActive(false);
 	}

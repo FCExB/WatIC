@@ -6,7 +6,7 @@ public class BlurrControl : SpriteControl {
 	public GameObject convo;
 	
 	public override void init() {
-		locationLookup.Add(State.BlurrState, new Vector3(5.125f,2.6f,0));
+		locationLookup.Add(State.BlurrState, new Vector3(5.125f,2.6f,-1));
 		
 		convo.SetActive(false);
 	}
