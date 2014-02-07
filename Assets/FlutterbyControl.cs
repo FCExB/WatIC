@@ -24,7 +24,7 @@ public class FlutterbyControl : SpriteControl {
 			timePassed += Time.deltaTime;
 			
 			if(timePassed > 3) {
-				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "Back")) {
+				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "...")) {
 					GetComponentInChildren<Dance>().dancing = false;
 					StateController.CurrentState = State.DancefloorState;
 				}
