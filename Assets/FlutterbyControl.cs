@@ -13,12 +13,28 @@ public class FlutterbyControl : SpriteControl {
 	}
 
 	public override void update() {
-		convo.SetActive(StateController.CurrentState == State.FlutterbyState && atLocation());
+		convo.SetActive((StateController.CurrentState == State.FlutterbyState || 
+		                 	StateController.CurrentState == State.FlutterbyLeavesState) && firstLineSaid);
 	}
 
 	float timePassed = 0;
 
+	bool firstLineSaid = false;
+
 	void OnGUI () {
+
+		if(StateController.CurrentState != State.FlutterbyState || !atLocation()) {
+			timePassed = 0;
+			GetComponentInChildren<Dance>().dancing = true;
+			return;
+		}
+
+		if(!firstLineSaid) {
+			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "I Like you")) {
+				firstLineSaid = true;
+			}
+			return;
+		}
 
 		if(StateController.CurrentState == State.FlutterbyLeavesState) {
 			timePassed += Time.deltaTime;
@@ -32,19 +48,12 @@ public class FlutterbyControl : SpriteControl {
 			return;
 		} 
 
-		if(StateController.CurrentState != State.FlutterbyState || !atLocation()) {
-			timePassed = 0;
-			GetComponentInChildren<Dance>().dancing = true;
-			return;
-		}
 		timePassed += Time.deltaTime;
 
 		if(timePassed > 5) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "*leaves*")) {
-				GetComponentInChildren<Dance>().dancing = false;
-				StateController.CurrentState = State.FlutterbyLeavesState;
-				timePassed = 0;
-			}
+			GetComponentInChildren<Dance>().dancing = false;
+			StateController.CurrentState = State.FlutterbyLeavesState;
+			timePassed = 0;
 		}
 	}
 }
