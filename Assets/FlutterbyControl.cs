@@ -14,7 +14,8 @@ public class FlutterbyControl : SpriteControl {
 
 	public override void update() {
 		convo.SetActive((StateController.CurrentState == State.FlutterbyState || 
-		                 	StateController.CurrentState == State.FlutterbyLeavesState) && firstLineSaid);
+		                 	StateController.CurrentState == State.FlutterbyLeavesState) 
+		                && firstLineSaid);
 	}
 
 	float timePassed = 0;

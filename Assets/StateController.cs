@@ -26,21 +26,32 @@ public class StateController : MonoBehaviour {
 
 	static State currentState;
 	static Transition currentTransition;
-	
-	static bool spokenToSomeone = false;
+
+	static HashSet<State> stateHistory = new HashSet<State>();
+	static bool girl = false;
+	static bool partners;
 
 	public static State CurrentState {
 		get { return currentState; }
 		set { 
-			if(value == State.DancefloorState && currentState != State.MenuState)
-				spokenToSomeone = true;
+			stateHistory.Add(value);
+			if(stateHistory.Count > 2 && value == State.DancefloorState)
+				girl = true;
+			if(stateHistory.Contains(State.FlutterbyState) &&
+			   stateHistory.Contains(State.BlurrState)
+			   	&& value == State.DancefloorState)
+				partners = true;
 			currentTransition = new Transition(currentState,value);
 			currentState = value; 
 			}
 	}
 
 	public static bool SpokenToSomeone {
-		get { return spokenToSomeone;}
+		get { return girl;}
+	}
+
+	public static bool FlutterbyPartner {
+		get { return partners; }
 	}
 
 	public static Transition CurrentTransition {
@@ -56,6 +67,7 @@ public class StateController : MonoBehaviour {
 		currentState = State.MenuState;
 		currentTransition = new Transition(State.StartState,State.MenuState);
 
+		stateHistory.Add(State.MenuState);
 	}
 	
 	// Update is called once per frame
