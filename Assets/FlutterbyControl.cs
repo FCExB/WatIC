@@ -23,7 +23,8 @@ public class FlutterbyControl : SpriteControl {
 
 	void OnGUI () {
 
-		if(StateController.CurrentState != State.FlutterbyState || !atLocation()) {
+		if(!(StateController.CurrentState == State.FlutterbyState || 
+		   StateController.CurrentState == State.FlutterbyLeavesState) || !atLocation()) {
 			timePassed = 0;
 			GetComponentInChildren<Dance>().dancing = true;
 			return;
@@ -39,7 +40,7 @@ public class FlutterbyControl : SpriteControl {
 		if(StateController.CurrentState == State.FlutterbyLeavesState) {
 			timePassed += Time.deltaTime;
 			
-			if(timePassed > 3) {
+			if(timePassed > 2) {
 				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "...")) {
 					GetComponentInChildren<Dance>().dancing = false;
 					StateController.CurrentState = State.DancefloorState;
