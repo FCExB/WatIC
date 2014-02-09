@@ -12,7 +12,6 @@ public class BlurrControl : SpriteControl {
 	}
 	
 	public override void update() {
-
 		convo.SetActive(StateController.CurrentState == State.BlurrState && firstLineSaid);
 	}
 

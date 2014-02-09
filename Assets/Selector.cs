@@ -6,11 +6,14 @@ public class Selector : MonoBehaviour {
 	public State stateOnClick = State.MenuState;
 	public Color colorOnMouseOver = new Color(248/255f,184/255f,219/255f);
 
+	Color defaultColor;
+
 	SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		defaultColor = spriteRenderer.color;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +26,7 @@ public class Selector : MonoBehaviour {
 	}
 
 	void OnMouseExit() {
-		spriteRenderer.color = Color.white;
+		spriteRenderer.color = defaultColor;
 	}
 
 	void OnMouseEnter() {

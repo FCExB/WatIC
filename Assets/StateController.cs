@@ -25,13 +25,21 @@ public class StateController : MonoBehaviour {
 
 	static State currentState;
 	static Transition currentTransition;
+	
+	static bool spokenToSomeone = false;
 
 	public static State CurrentState {
 		get { return currentState; }
 		set { 
+			if(value == State.DancefloorState && currentState != State.MenuState)
+				spokenToSomeone = true;
 			currentTransition = new Transition(currentState,value);
 			currentState = value; 
 			}
+	}
+
+	public static bool SpokenToSomeone {
+		get { return spokenToSomeone;}
 	}
 
 	public static Transition CurrentTransition {
