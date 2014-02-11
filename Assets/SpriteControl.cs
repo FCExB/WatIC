@@ -13,6 +13,7 @@ public abstract class SpriteControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		init();
+		transform.position = defaultLocation;
 	}
 
 	public abstract void init();

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public enum State{StartState, MenuState, DancefloorState, FlutterbyState, FlutterbyLeavesState,
-					BlurrState, GState, GirlState};
+					BlurrState, GState, GirlState, FlutterbyPartnerState};
 
 public class StateController : MonoBehaviour {
 
@@ -16,7 +16,8 @@ public class StateController : MonoBehaviour {
 		{State.FlutterbyLeavesState, new StateValues(new Vector3(-6.95f,-8.985f,-10), 4.125f)},
 		{State.BlurrState, new StateValues(new Vector3(15.34f,0.185f,-10), 4.125f)},
 		{State.GState, new StateValues(new Vector3(7.303f,-8.995f,-10), 4.125f)},
-		{State.GirlState, new StateValues(new Vector3(0.489f,-10.04f,-10), 4.125f)}
+		{State.GirlState, new StateValues(new Vector3(0.489f,-10.04f,-10), 4.125f)},
+		{State.FlutterbyPartnerState, new StateValues(new Vector3(-0.5959389f,-10.04321f,-10), 4.125f)}
 	};
 
 	static Dictionary<Transition,TransitionValues> transitionsLookup = new Dictionary<Transition,TransitionValues>()

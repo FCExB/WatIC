@@ -47,6 +47,7 @@ public class FlutterbyControl : SpriteControl {
 				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "...")) {
 					GetComponentInChildren<Dance>().dancing = false;
 					StateController.CurrentState = State.DancefloorState;
+					firstLineSaid = false;
 				}
 			}
 			return;

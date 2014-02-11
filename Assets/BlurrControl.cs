@@ -29,6 +29,7 @@ public class BlurrControl : SpriteControl {
 			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "You look sad")) {
 				firstLineSaid = true;
 			}
+			return;
 		}
 
 		timePassed += Time.deltaTime;
@@ -36,6 +37,7 @@ public class BlurrControl : SpriteControl {
 		if(timePassed > 8) {
 			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "*weird")) {
 				StateController.CurrentState = State.DancefloorState;
+				firstLineSaid = false;
 			}
 		}
 	}

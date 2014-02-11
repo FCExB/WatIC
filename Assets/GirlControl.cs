@@ -38,6 +38,7 @@ public class GirlControl : SpriteControl {
 		if(timePassed > 5){
 			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "*leave*")) {
 				StateController.CurrentState = State.DancefloorState;
+				firstLineSaid = false;
 			}
 		}
 	}
