@@ -37,7 +37,7 @@ public class BlurrControl : SpriteControl {
 		timePassed += Time.deltaTime;
 		
 		if(timePassed > 8) {
-			if(GUI.Button(new Rect(Screen.width*0.65f,Screen.height*0.8f,
+			if(GUI.Button(new Rect(Screen.width*0.7f,Screen.height*0.78f,
 			                       Screen.width*0.1f,Screen.height*0.05f), "*weird")) {
 				StateController.CurrentState = State.DancefloorState;
 				firstLineSaid = false;

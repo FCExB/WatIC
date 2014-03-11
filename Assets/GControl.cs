@@ -27,7 +27,8 @@ public class GControl : SpriteControl {
 		}
 		
 		if(!firstLineSaid && atLocation()) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "Keep trying man.")) {
+			if(GUI.Button(new Rect(Screen.width*0.46f,Screen.height*0.29f,
+			                       Screen.width*0.25f,Screen.height*0.1f), "Keep trying man.")) {
 				firstLineSaid = true;
 				GetComponentInChildren<Dance>().dancing = false;
 			}
@@ -37,7 +38,8 @@ public class GControl : SpriteControl {
 		timePassed += Time.deltaTime;
 		
 		if(timePassed > 3) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "...")) {
+			if(GUI.Button(new Rect(Screen.width*0.46f,Screen.height*0.78f,
+			                       Screen.width*0.25f,Screen.height*0.1f), "...")) {
 				StateController.CurrentState = State.DancefloorState;
 				GetComponentInChildren<Dance>().dancing = true;
 				firstLineSaid = false;
