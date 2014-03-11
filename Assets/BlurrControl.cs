@@ -7,6 +7,7 @@ public class BlurrControl : SpriteControl {
 	
 	public override void init() {
 		locationLookup.Add(State.BlurrState, new Vector3(5.125f,2.6f,-1));
+		locationLookup.Add(State.SaveState, new Vector3(-1.03f,-8.85f, -1f));
 		
 		convo.SetActive(false);
 	}
@@ -26,7 +27,8 @@ public class BlurrControl : SpriteControl {
 		}
 
 		if(!firstLineSaid && atLocation()) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "You look sad")) {
+			if(GUI.Button(new Rect(Screen.width*0.27f,Screen.height*0.2f,
+			                       Screen.width*0.25f,Screen.height*0.1f), "You look sad")) {
 				firstLineSaid = true;
 			}
 			return;
@@ -35,7 +37,8 @@ public class BlurrControl : SpriteControl {
 		timePassed += Time.deltaTime;
 		
 		if(timePassed > 8) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "*weird")) {
+			if(GUI.Button(new Rect(Screen.width*0.65f,Screen.height*0.8f,
+			                       Screen.width*0.1f,Screen.height*0.05f), "*weird")) {
 				StateController.CurrentState = State.DancefloorState;
 				firstLineSaid = false;
 			}

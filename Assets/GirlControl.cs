@@ -8,6 +8,8 @@ public class GirlControl : SpriteControl {
 
 	public override void init() {
 		locationLookup.Add(State.GirlState, new Vector3(-3.37f,-9.98f,-2));
+		locationLookup.Add(State.FinalState, new Vector3(-0.39f,-2.95f,-2));
+		locationLookup.Add(State.BaddyState, new Vector3(-4.95f,-11.24f,-2));
 		convo.SetActive(false);
 	}
 

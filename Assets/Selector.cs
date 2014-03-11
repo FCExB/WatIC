@@ -6,6 +6,8 @@ public class Selector : MonoBehaviour {
 	public State stateOnClick = State.MenuState;
 	public Color colorOnMouseOver = new Color(248/255f,184/255f,219/255f);
 
+	public bool selectOnFinalState = false;
+
 	Color defaultColor;
 
 	SpriteRenderer spriteRenderer;
@@ -22,6 +24,9 @@ public class Selector : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
+		if(StateController.CurrentState == State.FinalState && !selectOnFinalState)
+			return;
+
 		StateController.CurrentState = stateOnClick;
 	}
 
@@ -30,7 +35,9 @@ public class Selector : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
-		if(StateController.CurrentState == State.DancefloorState)
+
+		if(StateController.CurrentState == State.DancefloorState ||
+		   StateController.CurrentState == State.FinalState && selectOnFinalState)
 			spriteRenderer.color = colorOnMouseOver; 
 	}
 }

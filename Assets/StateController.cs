@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public enum State{StartState, MenuState, DancefloorState, FlutterbyState, FlutterbyLeavesState,
-					BlurrState, GState, GirlState, FlutterbyPartnerState};
+					BlurrState, GState, GirlState, FlutterbyPartnerState, SaveState,
+					FinalState, BaddyState};
 
 public class StateController : MonoBehaviour {
 
@@ -17,7 +18,11 @@ public class StateController : MonoBehaviour {
 		{State.BlurrState, new StateValues(new Vector3(15.34f,0.185f,-10), 4.125f)},
 		{State.GState, new StateValues(new Vector3(7.303f,-8.995f,-10), 4.125f)},
 		{State.GirlState, new StateValues(new Vector3(0.489f,-10.04f,-10), 4.125f)},
-		{State.FlutterbyPartnerState, new StateValues(new Vector3(-0.5959389f,-10.04321f,-10), 4.125f)}
+		{State.FlutterbyPartnerState, new StateValues(new Vector3(-0.5959389f,-10.04321f,-10), 4.125f)},
+		{State.SaveState, new StateValues(new Vector3(-0.5959389f,-10.04321f,-10), 4.125f)},
+
+		{State.FinalState, new StateValues(new Vector3(-0.1f,-1.198f,-10f), 4.125f)},
+		{State.BaddyState, new StateValues(new Vector3(-3.86f,-13.98f,-10f), 5.2f)}
 	};
 
 	static Dictionary<Transition,TransitionValues> transitionsLookup = new Dictionary<Transition,TransitionValues>()
@@ -35,15 +40,25 @@ public class StateController : MonoBehaviour {
 	public static State CurrentState {
 		get { return currentState; }
 		set { 
-			stateHistory.Add(value);
-			if(stateHistory.Count > 2 && value == State.DancefloorState)
-				girl = true;
-			if(stateHistory.Contains(State.FlutterbyState) &&
-			   stateHistory.Contains(State.BlurrState)
-			   	&& value == State.DancefloorState)
-				partners = true;
-			currentTransition = new Transition(currentState,value);
-			currentState = value; 
+				stateHistory.Add(currentState);
+				if(stateHistory.Count > 2 && value == State.DancefloorState)
+					girl = true;
+				if(stateHistory.Contains(State.FlutterbyState) &&
+				   stateHistory.Contains(State.BlurrState)
+				   	&& value == State.DancefloorState)
+					partners = true;
+				if(stateHistory.Contains(State.SaveState) 
+				   && stateHistory.Contains(State.GirlState) 
+			   	   && value == State.DancefloorState) {
+					currentState = State.FinalState;
+				} else {
+					if(value == State.MenuState) {
+						stateHistory.Clear();
+					}
+
+					currentTransition = new Transition(currentState,value);
+					currentState = value; 
+				}
 			}
 	}
 
@@ -52,7 +67,7 @@ public class StateController : MonoBehaviour {
 	}
 
 	public static bool FlutterbyPartner {
-		get { return partners; }
+		get { return partners && !stateHistory.Contains(State.SaveState); }
 	}
 
 	public static Transition CurrentTransition {
