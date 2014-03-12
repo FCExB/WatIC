@@ -35,11 +35,15 @@ public class StateController : MonoBehaviour {
 
 	static HashSet<State> stateHistory = new HashSet<State>();
 	static bool girl = false;
-	static bool partners;
+	static bool partners = false;
+
+	static float timeInMenu = 0;
 
 	public static State CurrentState {
 		get { return currentState; }
 		set { 
+				if(value == State.MenuState)
+					timeInMenu = 0;
 				stateHistory.Add(currentState);
 				if(stateHistory.Count > 2 && value == State.DancefloorState)
 					girl = true;
@@ -54,6 +58,8 @@ public class StateController : MonoBehaviour {
 				} else {
 					if(value == State.MenuState) {
 						stateHistory.Clear();
+						girl = false;
+						partners = false;
 					}
 
 					currentTransition = new Transition(currentState,value);
@@ -74,6 +80,10 @@ public class StateController : MonoBehaviour {
 		get { return currentTransition; }
 	}
 
+	public static bool GotToMenu {
+		get { return timeInMenu > 7.52f; } 
+	}
+
 	// Use this for initialization
 	void Start () {
 		StateValues values = stateLookup[State.StartState];
@@ -88,6 +98,8 @@ public class StateController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		timeInMenu += Time.deltaTime;
+
 		StateValues stateValues = stateLookup[currentState];
 
 		TransitionValues transitionValues;

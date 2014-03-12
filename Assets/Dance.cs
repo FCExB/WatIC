@@ -23,7 +23,7 @@ public class Dance : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(!dancing || !Menu.gotToMenu)
+		if(!dancing || !StateController.GotToMenu)
 			return;
 
 		if(Quaternion.Angle(transform.localRotation, targetRotation) < 0.1f)

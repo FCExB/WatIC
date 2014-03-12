@@ -33,7 +33,8 @@ public class FlutterbyControl : SpriteControl {
 
 		if(!firstLineSaid) {
 			if(atLocation()) {
-				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "I Like you")) {
+				if(GUI.Button(new Rect(Screen.width*0.55f,Screen.height*0.19f,
+				                       Screen.width*0.2f,Screen.height*0.08f), "I Like you")) {
 					firstLineSaid = true;
 				}
 			}
@@ -44,7 +45,8 @@ public class FlutterbyControl : SpriteControl {
 			timePassed += Time.deltaTime;
 			
 			if(timePassed > 3) {
-				if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "...")) {
+				if(GUI.Button(new Rect(Screen.width*0.7f,Screen.height*0.8f,
+				                       Screen.width*0.2f,Screen.height*0.08f), "...")) {
 					GetComponentInChildren<Dance>().dancing = false;
 					StateController.CurrentState = State.DancefloorState;
 					firstLineSaid = false;
@@ -55,7 +57,7 @@ public class FlutterbyControl : SpriteControl {
 
 		timePassed += Time.deltaTime;
 
-		if(timePassed > 5) {
+		if(timePassed > 7) {
 			GetComponentInChildren<Dance>().dancing = false;
 			StateController.CurrentState = State.FlutterbyLeavesState;
 			timePassed = 0;
