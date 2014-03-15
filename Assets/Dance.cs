@@ -16,8 +16,8 @@ public class Dance : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		targetRotation = transform.localRotation;
-		targetPosition = transform.localPosition;
+		targetRotation = Quaternion.AngleAxis((Random.value-0.5f)*2 * maxAngleRange, Vector3.forward);
+		targetPosition = new Vector3(0f,(Random.value-0.5f)*2 * maxVerticalChange,0);
 	}
 	
 	// Update is called once per frame

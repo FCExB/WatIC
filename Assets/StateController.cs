@@ -11,7 +11,7 @@ public class StateController : MonoBehaviour {
 	static Dictionary<State,StateValues> stateLookup = new Dictionary<State,StateValues>()
 	{	
 		{State.StartState, new StateValues(new Vector3(1.1f,2.5f,-10f), 0.0001f)},
-		{State.MenuState, new StateValues(new Vector3(1.16f,2.39f,-10f), 2.8f)},
+		{State.MenuState, new StateValues(new Vector3(1.16f,2.39f,-10f), 2.9f)},
 		{State.DancefloorState, new StateValues(new Vector3(-0.1f,-1.198f,-10f), 4.125f)},
 		{State.FlutterbyState, new StateValues(new Vector3(-6.95f,-8.985f,-10), 4.125f)},
 		{State.FlutterbyLeavesState, new StateValues(new Vector3(-6.95f,-8.985f,-10), 4.125f)},
