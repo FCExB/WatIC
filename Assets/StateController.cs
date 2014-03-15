@@ -84,6 +84,10 @@ public class StateController : MonoBehaviour {
 		get { return timeInMenu > 7.52f; } 
 	}
 
+	public static bool BeenTo(State state) {
+		return stateHistory.Contains(state);
+	}
+
 	// Use this for initialization
 	void Start () {
 		StateValues values = stateLookup[State.StartState];
