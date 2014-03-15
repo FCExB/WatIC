@@ -16,8 +16,8 @@ public class Menu : MonoBehaviour {
 	void OnGUI () {
 	
 		if(StateController.CurrentState == State.MenuState && StateController.GotToMenu 
-		   && GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.9f,
-		                          Screen.width*0.2f,Screen.height*0.05f), "Start")) {
+		   && GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.88f,
+		                          Screen.width*0.2f,Screen.height*0.09f), "Start")) {
 			StateController.CurrentState = State.DancefloorState;
 		}
 	}

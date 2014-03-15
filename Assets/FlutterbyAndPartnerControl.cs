@@ -32,7 +32,8 @@ public class FlutterbyAndPartnerControl : SpriteControl {
 		}
 		
 		if(!firstLineSaid && !interrupt && atLocation()) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "Hey")) {
+			if(GUI.Button(new Rect(Screen.width*0.1f,Screen.height*0.2f,
+			                       Screen.width*0.1f,Screen.height*0.09f), "Hey")) {
 				firstLineSaid = true;
 				GetComponentInChildren<Dance>().dancing = false;
 			}
@@ -42,7 +43,8 @@ public class FlutterbyAndPartnerControl : SpriteControl {
 		timePassed += Time.deltaTime;
 		
 		if(firstLineSaid && timePassed > 3) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "No, I just...")) {
+			if(GUI.Button(new Rect(Screen.width*0.08f,Screen.height*0.7f,
+			                                  Screen.width*0.23f,Screen.height*0.09f), "No, I just...")) {
 				StateController.CurrentState = State.SaveState;
 				timePassed = 0;
 				firstLineSaid = false;
@@ -50,8 +52,9 @@ public class FlutterbyAndPartnerControl : SpriteControl {
 			}
 		}
 
-		if(interrupt && timePassed > 3) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "Ok")) {
+		if(interrupt && timePassed > 4) {
+			if(GUI.Button(new Rect(Screen.width*0.68f,Screen.height*0.81f,
+			                       Screen.width*0.1f,Screen.height*0.09f), "Ok")) {
 				StateController.CurrentState = State.DancefloorState;
 				GetComponentInChildren<Dance>().dancing = true;
 				timePassed = 0;
