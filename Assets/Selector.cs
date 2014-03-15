@@ -22,7 +22,8 @@ public class Selector : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
-		if(StateController.CurrentState == State.DancefloorState &&
+		if((StateController.CurrentState == State.DancefloorState ||
+		   StateController.CurrentState == State.FinalState) &&
 		   	!StateController.BeenTo(stateOnClick))
 			StateController.CurrentState = stateOnClick;
 	}
@@ -32,7 +33,8 @@ public class Selector : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
-		if(StateController.CurrentState == State.DancefloorState && 
+		if((StateController.CurrentState == State.DancefloorState ||
+		    StateController.CurrentState == State.FinalState) && 
 		   	!StateController.BeenTo(stateOnClick))
 			spriteRenderer.color = colorOnMouseOver; 
 	}

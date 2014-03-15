@@ -6,7 +6,7 @@ public class GControl : SpriteControl {
 	public GameObject convo;
 	
 	public override void init() {
-		locationLookup.Add(State.DancefloorState, new Vector3(2f, 0f, 0f));
+		locationLookup.Add(State.DancefloorState, new Vector3(1.6f, 0f, 0f));
 		locationLookup.Add(State.GState, new Vector3(1.825f,-6.58f,-1));
 		
 		convo.SetActive(false);

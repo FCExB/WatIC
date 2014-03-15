@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public enum State{StartState, MenuState, DancefloorState, FlutterbyState, FlutterbyLeavesState,
 					BlurrState, GState, GirlState, FlutterbyPartnerState, SaveState,
-					FinalState, BaddyState};
+					FinalState, TogetherState, BaddyState};
 
 public class StateController : MonoBehaviour {
 
@@ -22,7 +22,8 @@ public class StateController : MonoBehaviour {
 		{State.SaveState, new StateValues(new Vector3(-0.5959389f,-10.04321f,-10), 4.125f)},
 
 		{State.FinalState, new StateValues(new Vector3(-0.1f,-1.198f,-10f), 4.125f)},
-		{State.BaddyState, new StateValues(new Vector3(-3.86f,-13.98f,-10f), 5.2f)}
+		{State.BaddyState, new StateValues(new Vector3(-3.86f,-13.98f,-10f), 5.2f)},
+		{State.TogetherState, new StateValues(new Vector3(-3.86f,-13.98f,-10f), 5.2f)}
 	};
 
 	static Dictionary<Transition,TransitionValues> transitionsLookup = new Dictionary<Transition,TransitionValues>()
@@ -51,9 +52,7 @@ public class StateController : MonoBehaviour {
 				   stateHistory.Contains(State.BlurrState)
 				   	&& value == State.DancefloorState)
 					partners = true;
-				if(stateHistory.Contains(State.SaveState) 
-				   && stateHistory.Contains(State.GirlState) 
-			   	   && value == State.DancefloorState) {
+				if(ShowBaddy && value == State.DancefloorState) {
 					currentState = State.FinalState;
 				} else {
 					if(value == State.MenuState) {
@@ -74,6 +73,11 @@ public class StateController : MonoBehaviour {
 
 	public static bool FlutterbyPartner {
 		get { return partners && !stateHistory.Contains(State.SaveState); }
+	}
+
+	public static bool ShowBaddy {
+		get { return stateHistory.Contains(State.SaveState) 
+			          && stateHistory.Contains(State.GirlState); }
 	}
 
 	public static Transition CurrentTransition {
