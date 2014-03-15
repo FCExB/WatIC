@@ -29,7 +29,8 @@ public class GirlControl : SpriteControl {
 		}
 		
 		if(!firstLineSaid && atLocation()) {
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "Hi")) {
+			if(GUI.Button(new Rect(Screen.width*0.65f,Screen.height*0.07f,
+			                       Screen.width*0.1f,Screen.height*0.08f), "Hi")) {
 				firstLineSaid = true;
 			}
 			return;
@@ -38,7 +39,8 @@ public class GirlControl : SpriteControl {
 		timePassed += Time.deltaTime;
 
 		if(timePassed > 5){
-			if(GUI.Button(new Rect(Screen.width - 100,Screen.height - 40,80,20), "*leave*")) {
+			if(GUI.Button(new Rect(Screen.width*0.55f,Screen.height*0.9f,
+			                       Screen.width*0.15f,Screen.height*0.08f), "*leave*")) {
 				StateController.CurrentState = State.DancefloorState;
 				firstLineSaid = false;
 			}
